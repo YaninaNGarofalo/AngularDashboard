@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EpisodesService } from '../../services/episodes.service';
+import { ExcelService } from '../../services/excel.service';
 import { Root } from '../../interfaces/episode';
 
 @Component({
@@ -19,7 +20,7 @@ export class EpisodiosComponent implements OnInit {
     } ,
     results: []
   }
-  constructor(private episodeService:EpisodesService) {
+  constructor(private episodeService:EpisodesService,private excelService:ExcelService) {
     episodeService.getEpisodios(this.currentPage).subscribe({
       next:data => this.episodiosObject = data,
       error:err => {
@@ -42,7 +43,9 @@ export class EpisodiosComponent implements OnInit {
       next:data =>  this.episodiosObject = data
     });
   }
-
+  descargarTabla(obj:Root,tab:string, file:string ){
+    this.excelService.createWExcel(obj.results, tab, file)
+  }
   ngOnInit(): void {
   }
 
