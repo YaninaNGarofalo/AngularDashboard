@@ -1,0 +1,32 @@
+<app-menu></app-menu>
+<div class="d-flex p-5" >
+    <div class="container  p-4 mt-5">
+        <h1><strong>Listado</strong> Episodios</h1>
+        <table class="table table-hover table-bordered table-stripped text-center">
+            <thead class="bg-primary text-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fecha de Lanzamiento</th>
+                    <th>Episodio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let episodio of episodiosObject.results">
+                    <td>{{episodio.id}}</td>
+                    <td>{{episodio.name}}</td>
+                    <td>{{episodio.air_date}}</td>
+                    <td>{{episodio.episode}}</td>
+                </tr> 
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" (click)="cambiarPag('anterior')" >Previous</a></li>
+              <li class="page-item "><a class="page-link">{{currentPage}}</a></li>
+              <li class="page-item"><a class="page-link" (click)="cambiarPag('siguiente')" >Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+

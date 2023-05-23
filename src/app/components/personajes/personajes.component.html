@@ -1,0 +1,22 @@
+<app-menu></app-menu>
+<main class="p-5">
+    <div class="container mt-5 pt-5">
+        <h1><strong>Listado</strong> Personajes</h1>
+        <div *ngIf="errorMessage!=''">{{errorMessage}}</div>
+        <div class="row">
+            <div class="col-md-3 pb-3" *ngFor="let personaje of personajesObject.results" >
+                <img [src]="personaje.image" alt="" class="w-100 rounded img-fluid image-frame" >
+                <h4 class="pt-2"><span><i class="fas fa-chevron-right"></i> </span> {{personaje.name}}</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <a class="btn btn-primary btn-sm " [routerLink]="['/personaje', personaje.id]"><i class="far fa-address-card"></i> Ver Ficha</a>
+            </div>
+        </div>
+        <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" (click)="cambiarPag('anterior')" >Previous</a></li>
+              <li class="page-item "><a class="page-link">{{currentPage}}</a></li>
+              <li class="page-item"><a class="page-link" (click)="cambiarPag('siguiente')" >Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</main>
